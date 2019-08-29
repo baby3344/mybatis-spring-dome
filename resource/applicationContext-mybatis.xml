@@ -1,0 +1,9 @@
+<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destory-method="close">
+    <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+    <property name="url">
+        <value><![CDATA[jdbc:mysql://127.0.0.1:3306/smbms?
+        useUnicode=true&characterEncoding=utf-8]]></value>
+    </property>
+    <property name="username" value="root"/>
+    <property name="password" value="root"/>
+</bean>
