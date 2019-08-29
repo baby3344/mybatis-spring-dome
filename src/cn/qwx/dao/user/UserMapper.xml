@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org//dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.qwx.dao.user.UserMapper">
+    <!--当数据库中的字段信息与对象的属性不一致时通过resultMap来映射-->
+    <resultMap id="userList" type="User">
+        <result property="userRoleName" column="roleName"/>
+    </resultMap>
+
+    <!--查询用户列表（参数：对象入参）-->
+    <select id="getUserList" resultMap="userList" parameterType="User">
+        select u.*,r.roleName from smbms_user u,smbms_role r
+        where u.userName like CONCAT('%',#{userName},'%')
+        and u.userRole=#{userRole} and u.userRole=r.id
+    </select>
+</mapper>
