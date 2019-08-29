@@ -33,4 +33,15 @@ public class UserTest {
             +user1.getAddress());
         }
     }
+
+    @Test
+    public void Test1(){
+        ApplicationContext ctx=new ClassPathXmlApplicationContext("applicationContext-mybatis.xml");
+        UserService userService=(UserService)ctx.getBean("userService");
+        User user=new User();
+        user.setUserName("张三");
+        user.setAddress("郴州");
+        Boolean result=userService.addNewsUser(user);
+        logger.debug("testAdd result:"+result);
+    }
 }

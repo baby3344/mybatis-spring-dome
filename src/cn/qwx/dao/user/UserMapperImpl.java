@@ -26,4 +26,10 @@ public class UserMapperImpl implements UserMapper {
         return sqlSession.selectList("cn.qwx.dao.user.UserMapper.getUserList",user);
     }
 
+    @Override
+    public int add(User user) {
+        return sqlSession.insert("cn.qwx.dao.user.UserMapper.add",user);
+    }
+
+
 }

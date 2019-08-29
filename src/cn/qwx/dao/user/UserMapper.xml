@@ -12,4 +12,10 @@
         where u.userName like CONCAT('%',#{userName},'%')
         and u.userRole=#{userRole} and u.userRole=r.id
     </select>
+
+
+    <insert id="add" parameterType="User">
+        insert into smbms_user (userCode,userName,userPassword,gender,birthday,phone,address,userRole,createdBy,creationDate)
+        values(#{userCode},#{userName},#{userPassword},#{gender},#{birthday},#{phone},#{address},#{userRole},#{createdBy},#{creationDate})
+    </insert>
 </mapper>

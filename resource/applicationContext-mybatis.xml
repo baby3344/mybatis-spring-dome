@@ -28,25 +28,70 @@
         <!-- 引用MyBatis配置文件中的配置 -->
         <property name="configLocation" value="classpath:MyBatis-config.xml" />
         <!-- 配置SQL映射文件信息 -->
-        <property name="mapperLocations">
+       <!-- <property name="mapperLocations">
         <list>
         <value>classpath:cn/qwx/dao/**/*.xml</value>
        </list>
-        </property>
+        </property>-->
     </bean>
+
+    <!--示例10配置DAO-->
+    <!--<bean id="userMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="cn.qwx.dao.user.UserMapper"/>
+        <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+    </bean>-->
+
+    <!--示例11-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="cn.qwx.dao"/>
+    </bean>
+
+    <!--配置扫描注解定义的业务Bean-->
+   <context:component-scan base-package="cn.qwx.service"/>
+
 
     <!--配置SqlSessionTemplate-->
     <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
         <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"/>
     </bean>
+
+
     <!--配置DAO组件并注入SqlSessionTemplate实例-->
-   <bean id="userMapper" class="cn.qwx.dao.user.UserMapperImpl">
+    <!-- <bean id="userMapper" class="cn.qwx.dao.user.UserMapperImpl">
        <property name="sqlSession" ref="sqlSessionTemplate"/>
-   </bean>
+   </bean>-->
 
     <!--配置业务Bean并注入DAO实例-->
     <bean id="userService" class="cn.qwx.service.UserServiceImpl">
         <property name="userMapper" ref="userMapper"/>
     </bean>
+
+
+    <!--定义事务管理器-->
+    <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!--示例20-->
+    <tx:annotation-driven transaction-manager="txManager"/>
+
+    <!--通过<tx:advice>标签为指定的事务管理器设置事务-->
+    <tx:advice id="txAdvice" transaction-manager="txManager">
+        <tx:attributes>
+            <tx:method name="find*" propagation="SUPPORTS"/>
+            <tx:method name="add*" propagation="REQUIRED"/>
+            <tx:method name="del*" propagation="REQUIRED"/>
+            <tx:method name="update*" propagation="REQUIRED"/>
+            <tx:method name="*" propagation="REQUIRED"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <aop:config>
+        <!--定义切入点-->
+        <aop:pointcut id="serviceMethod" expression="execution(* cn.qwx.service..*.*(..))"/>
+        <!--将事务增强与切入点组合-->
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="serviceMethod"/>
+    </aop:config>
+
 
 </beans>
