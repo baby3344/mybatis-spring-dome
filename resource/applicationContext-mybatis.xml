@@ -11,27 +11,35 @@
        http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
        http://www.springframework.org/schema/context
        http://www.springframework.org/schema/context/spring-context-3.2.xsd ">
-<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
-    <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-    <property name="url">
-        <value><![CDATA[jdbc:mysql://127.0.0.1:3306/smbms?
-        useUnicode=true&characterEncoding=utf-8]]></value>
-    </property>
-    <property name="username" value="root"/>
-    <property name="password" value="root"/>
-</bean>
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url">
+            <value><![CDATA[jdbc:mysql://127.0.0.1:3306/smbms?
+            useUnicode=true&characterEncoding=utf-8]]></value>
+        </property>
+        <property name="username" value="root"/>
+        <property name="password" value="root"/>
+    </bean>
 
-<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-    <!-- 引用数据源组件 -->
-    <property name="dataSource" ref="dataSource" />
-    <!-- 引用MyBatis配置文件中的配置 -->
-    <property name="configLocation" value="classpath:MyBatis-config.xml" />
-    <!-- 配置SQL映射文件信息 -->
-    <!--<property name="mapperLocations">-->
-    <!--<list>-->
-    <!--<value>classpath:cn/qwx/dao/**/*.xml</value>-->
-    <!--</list>-->
-    <!--</property>-->
-</bean>
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!-- 引用数据源组件 -->
+        <property name="dataSource" ref="dataSource" />
+        <!-- 引用MyBatis配置文件中的配置 -->
+        <property name="configLocation" value="classpath:MyBatis-config.xml" />
+        <!-- 配置SQL映射文件信息 -->
+        <!--<property name="mapperLocations">-->
+        <!--<list>-->
+        <!--<value>classpath:cn/qwx/dao/**/*.xml</value>-->
+        <!--</list>-->
+        <!--</property>-->
+    </bean>
 
+    <!--配置SqlSessionTemplate-->
+    <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+        <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"/>
+    </bean>
+    <!--配置DAO组件并注入SqlSessionTemplate实例-->
+   <bean id="userMapper" class="cn.qwx.dao.user.UserMapperImpl">
+       <property name="sqlSession" ref="sqlSessionTemplate"/>
+   </bean>
 </beans>

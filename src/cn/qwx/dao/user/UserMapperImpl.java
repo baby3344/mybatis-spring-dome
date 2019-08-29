@@ -1,4 +1,4 @@
-package cn.qwx.service.impl;
+package cn.qwx.dao.user;
 
 import cn.qwx.dao.user.UserMapper;
 import cn.qwx.entity.User;
