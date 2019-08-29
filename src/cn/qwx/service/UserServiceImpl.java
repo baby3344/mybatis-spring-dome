@@ -2,11 +2,17 @@ package cn.qwx.service;
 
 import cn.qwx.dao.user.UserMapper;
 import cn.qwx.entity.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
+@Service("userService")
 public class UserServiceImpl implements UserService {
 
+    @Autowired
+    //@Resource
     public UserMapper getUserMapper() {
         return userMapper;
     }
