@@ -21,17 +21,18 @@
         <property name="password" value="root"/>
     </bean>
 
+    <!--配置SqlSessionFactoryBean-->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <!-- 引用数据源组件 -->
         <property name="dataSource" ref="dataSource" />
         <!-- 引用MyBatis配置文件中的配置 -->
         <property name="configLocation" value="classpath:MyBatis-config.xml" />
         <!-- 配置SQL映射文件信息 -->
-        <!--<property name="mapperLocations">-->
-        <!--<list>-->
-        <!--<value>classpath:cn/qwx/dao/**/*.xml</value>-->
-        <!--</list>-->
-        <!--</property>-->
+        <property name="mapperLocations">
+        <list>
+        <value>classpath:cn/qwx/dao/**/*.xml</value>
+       </list>
+        </property>
     </bean>
 
     <!--配置SqlSessionTemplate-->
@@ -42,4 +43,10 @@
    <bean id="userMapper" class="cn.qwx.dao.user.UserMapperImpl">
        <property name="sqlSession" ref="sqlSessionTemplate"/>
    </bean>
+
+    <!--配置业务Bean并注入DAO实例-->
+    <bean id="userService" class="cn.qwx.service.UserServiceImpl">
+        <property name="userMapper" ref="userMapper"/>
+    </bean>
+
 </beans>
