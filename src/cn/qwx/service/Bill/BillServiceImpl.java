@@ -2,15 +2,19 @@ package cn.qwx.service.Bill;
 
 import cn.qwx.dao.bill.BillMapper;
 import cn.qwx.entity.Bill;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service("billService")
 public class BillServiceImpl implements BillService {
 
     public void setBillMapper(BillMapper billMapper) {
         this.billMapper = billMapper;
     }
 
+    @Autowired
     private BillMapper billMapper;
 
     public List<Bill> BillList(String productName, Integer providerId, Integer isPayment) {

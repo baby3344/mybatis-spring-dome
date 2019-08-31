@@ -38,12 +38,10 @@
     </bean>
 
 
-
-
-    <bean id="providerMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+    <!--<bean id="providerMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
         <property name="mapperInterface" value="cn.qwx.dao.provider.ProviderMapper"/>
         <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
-    </bean>
+    </bean>-->
 
    <!-- <bean id="providerMapper" class="cn.qwx.dao.provider.ProviderMapperImpl">
         <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
@@ -55,17 +53,21 @@
     </bean>
 
 
-
-      <!--采用MapperFactoryBean注册映射器实现-->
-    <bean id="billMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+      <!--采用MapperFactoryBean注册映射器实现查询订单表-->
+    <!--<bean id="billMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
         <property name="mapperInterface" value="cn.qwx.dao.bill.BillMapper"/>
         <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
-    </bean>
+    </bean>-->
 
+
+    <!--使用MapperScannerConfigurer注入实现查询订单表-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="cn.qwx.dao"/>
+    </bean>
     <bean id="billService" class="cn.qwx.service.Bill.BillServiceImpl">
         <property name="billMapper" ref="billMapper"/>
     </bean>
-
+    <context:component-scan base-package="cn.qwx.service"/>
 
 
     <!--示例10配置DAO-->

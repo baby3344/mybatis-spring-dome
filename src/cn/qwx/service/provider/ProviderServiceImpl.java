@@ -2,6 +2,7 @@ package cn.qwx.service.provider;
 
 import cn.qwx.dao.provider.ProviderMapper;
 import cn.qwx.entity.Provider;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -9,6 +10,7 @@ import java.util.List;
 @Service("providerService")
 public class ProviderServiceImpl implements  Providerervice {
 
+    @Autowired
     public ProviderMapper getProviderMapper() {
         return providerMapper;
     }
