@@ -13,6 +13,11 @@
         and u.userRole=#{userRole} and u.userRole=r.id
     </select>
 
+    <!--查询全部供应商数据-->
+    <select id="QueryList" resultType="Provider">
+        select * from smbms_provider
+    </select>
+
 
     <insert id="add" parameterType="User">
         insert into smbms_user (userCode,userName,userPassword,gender,birthday,phone,address,userRole,createdBy,creationDate)

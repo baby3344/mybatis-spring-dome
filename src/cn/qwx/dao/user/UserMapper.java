@@ -8,4 +8,5 @@ public interface UserMapper {
     public List<User> getUserList(User user);
 
     public int add(User user);
+
 }
