@@ -22,4 +22,10 @@ public class ProviderServiceImpl implements  Providerervice {
     public List<Provider> providerList() {
         return providerMapper.ProviderList();
     }
+
+
+    @Override
+    public List<Provider> providerListByName(String proName) {
+        return providerMapper.ProviderListByName(proName);
+    }
 }

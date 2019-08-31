@@ -21,4 +21,14 @@ public class ProviderTest {
             logger.debug("供应商编码："+provider.getProCode());
         }
     }
+
+    @Test
+    public void  test1(){
+        ApplicationContext ctx=new ClassPathXmlApplicationContext("applicationContext-mybatis.xml");
+        Providerervice  providerService=(Providerervice)ctx.getBean("providerService");
+        List<Provider> list=providerService.providerListByName("北京");
+        for (Provider provider:list){
+            logger.debug("供应商编码："+provider.getProCode());
+        }
+    }
 }

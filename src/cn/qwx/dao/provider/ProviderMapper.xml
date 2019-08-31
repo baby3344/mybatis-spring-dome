@@ -7,4 +7,9 @@
         select * from smbms_provider
     </select>
 
+    <!--根据供应商名称查询供应商-->
+    <select id="ProviderListByName" resultType="Provider">
+        select * from smbms_provider where proName like CONCAT('%',#{proName},'%')
+    </select>
+
 </mapper>
