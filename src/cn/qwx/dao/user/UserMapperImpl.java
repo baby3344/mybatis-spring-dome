@@ -23,5 +23,20 @@ public class UserMapperImpl extends SqlSessionDaoSupport implements UserMapper {
         return super.getSqlSession().insert("cn.qwx.dao.user.UserMapper.add",user);
     }
 
+    @Override
+    public int updateUser(User user) {
+        return super.getSqlSession().update("cn.qwx.dao.user.UserMapper.updateUser",user);
+    }
+
+    @Override
+    public int delById(int id) {
+        return super.getSqlSession().delete("cn.qwx.dao.user.UserMapper.delById",id);
+    }
+
+    @Override
+    public int updatePwd(User user) {
+        return super.getSqlSession().update("cn.qwx.dao.user.UserMapper.updatePwd",user);
+    }
+
 
 }

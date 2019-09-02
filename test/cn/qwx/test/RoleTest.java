@@ -36,4 +36,20 @@ public class RoleTest {
         int result=roleService.addRole(role);
         logger.debug("受影响的行数为："+result);
     }
+
+    @Test
+    public void testUpdate(){
+        ApplicationContext ctx=new ClassPathXmlApplicationContext("applicationContext-mybatis.xml");
+        RoleService roleService=(RoleService) ctx.getBean("roleService");
+        Role role=new Role();
+        role.setId(5);
+        role.setRoleName("小组长");
+        role.setRoleCode("SMBMS_EMPLOYEE");
+        role.setModifyBy(1);
+        role.setModifyDate(new Date());
+        int result=roleService.updateRoleById(role);
+        logger.debug("受影响的行数为："+result);
+    }
+
+    
 }

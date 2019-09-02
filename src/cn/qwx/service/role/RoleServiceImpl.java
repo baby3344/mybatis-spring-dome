@@ -29,4 +29,10 @@ public class RoleServiceImpl implements RoleService {
     public int addRole(Role role) {
         return roleMapper.addRole(role);
     }
+
+    @Override
+    @Transactional(propagation = Propagation.SUPPORTS)
+    public int updateRoleById(Role role) {
+        return roleMapper.updateRoleById(role);
+    }
 }

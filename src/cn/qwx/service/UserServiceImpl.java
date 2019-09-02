@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 @Transactional
@@ -51,5 +50,23 @@ public class UserServiceImpl implements UserService {
             throw  e;
         }
         return result;
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.SUPPORTS)
+    public int updateUser(User user) {
+        return userMapper.updateUser(user);
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.SUPPORTS)
+    public int delById(int id) {
+        return userMapper.delById(id);
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.SUPPORTS)
+    public int updatePwd(User user) {
+        return userMapper.updatePwd(user);
     }
 }

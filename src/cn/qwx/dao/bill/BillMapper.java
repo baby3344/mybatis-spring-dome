@@ -29,4 +29,11 @@ public interface BillMapper {
      * @param id
      */
     public int delById(Integer id);
+
+    /**
+     * 修改订单表信息
+     * @param bill
+     * @return
+     */
+    public int updateBillById(Bill bill);
 }

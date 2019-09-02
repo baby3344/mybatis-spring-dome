@@ -8,4 +8,10 @@ public interface UserService {
     public List<User> findUsersWithConditon(User user);
 
     public Boolean addNewsUser(User user);
+
+    public  int updateUser(User user);
+
+    public int delById(int id);
+
+    public int updatePwd(User user);
 }

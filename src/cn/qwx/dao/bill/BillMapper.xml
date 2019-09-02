@@ -18,4 +18,40 @@
         VALUES ( #{billCode}, #{productName}, #{productDesc}, #{productUnit}, #{productCount}, #{totalPrice}, #{isPayment}, #{createdBy},
         #{creationDate}, #{providerId} ) ;
     </insert>
+
+    <update id="updateBillById" parameterType="Bill">
+        UPDATE `smbms`.`smbms_bill`
+        <trim prefix="set" suffix="WHERE `id`=#{id}" suffixOverrides=",">
+            <if test="billCode!=null and billCode!=''">
+            `billCode` =  #{billCode},
+            </if>
+            <if test="productName!=null and productName!=''">
+             `productName` = #{productName},
+            </if>
+            <if test="productDesc!=null and productDesc!=''">
+             `productDesc` =  #{productDesc},
+            </if>
+            <if test="productUnit!=null and productUnit!=''">
+             `productUnit` =  #{productUnit},
+            </if>
+            <if test="productCount!=null and productCount!=''">
+            `productCount` =  #{productCount},
+            </if>
+            <if test="totalPrice!=null and totalPrice!=''">
+            `totalPrice` =  #{totalPrice},
+            </if>
+            <if test="isPayment!=null and isPayment!=''">
+             `isPayment` = #{isPayment},
+            </if>
+            <if test="modifyBy!=null and modifyBy!=''">
+             `modifyBy` = #{modifyBy},
+            </if>
+            <if test="modifyDate!=null and modifyDate!=''">
+            `modifyDate` = #{modifyDate},
+            </if>
+            <if test="providerId!=null and providerId!=''">
+                `providerId` = #{providerId}
+            </if>
+        </trim>
+    </update>
 </mapper>

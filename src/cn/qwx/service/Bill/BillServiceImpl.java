@@ -35,4 +35,10 @@ public class BillServiceImpl implements BillService {
     public int delById(Integer id) {
         return billMapper.delById(id);
     }
+
+    @Override
+    @Transactional(propagation = Propagation.SUPPORTS)
+    public int updateBillById(Bill bill) {
+        return billMapper.updateBillById(bill);
+    }
 }

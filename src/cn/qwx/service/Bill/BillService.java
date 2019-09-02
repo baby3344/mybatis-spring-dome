@@ -12,4 +12,6 @@ public interface BillService {
     public int addBill(Bill bill);
 
     public int delById(Integer id);
+
+    public int updateBillById(Bill bill);
 }

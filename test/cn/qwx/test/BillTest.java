@@ -45,10 +45,30 @@ public class BillTest {
     }
 
     @Test
-    public void  testdelById(){
+    public void  testDelById(){
         ApplicationContext ctx=new ClassPathXmlApplicationContext("applicationContext-mybatis.xml");
         BillService billService=(BillService)ctx.getBean("billService");
         int result=billService.delById(19);
+        logger.info("受影响的行数为："+result);
+    }
+
+    @Test
+    public void testUpdateBill(){
+        ApplicationContext ctx=new ClassPathXmlApplicationContext("applicationContext-mybatis.xml");
+        BillService billService=(BillService)ctx.getBean("billService");
+        Bill bill=new Bill();
+        bill.setBillCode("BILL2016_019");
+        bill.setProductName("可口可乐");
+        bill.setProductDesc("汽水");
+        bill.setProductUnit("瓶");
+        bill.setProductCount(new BigDecimal(3000.00));
+        bill.setTotalPrice(new BigDecimal(6000.00));
+        bill.setIsPayment(2);
+        bill.setMdifyDate(new Date());
+        bill.setModifyBy(1);
+        bill.setProviderId(1);
+        bill.setId(19);
+        int result=billService.updateBillById(bill);
         logger.info("受影响的行数为："+result);
     }
 }

@@ -20,6 +20,13 @@ public interface RoleMapper {
      */
     public int addRole(Role role);
 
+    /**
+     * 修改角色信息
+     * @param role
+     * @return
+     */
+    public int updateRoleById(Role role);
+
 }
 
 
