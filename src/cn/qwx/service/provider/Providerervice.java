@@ -13,4 +13,6 @@ public interface Providerervice {
    public int addProvider(Provider provider);
 
    public int updateProvider(Provider provider);
+
+   public int delProviderById(Integer id);
 }

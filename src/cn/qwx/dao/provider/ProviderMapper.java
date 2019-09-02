@@ -33,4 +33,11 @@ public interface ProviderMapper {
      * @return
      */
     public int updateProvider(Provider provider);
+
+    /**
+     * 根据供应商的id删除供应商信息
+     * @param id
+     * @return
+     */
+    public int delProviderById(Integer id);
 }

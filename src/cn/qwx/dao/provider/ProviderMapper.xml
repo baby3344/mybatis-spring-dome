@@ -51,4 +51,8 @@
         </trim>
     </update>
 
+    <delete id="delProviderById">
+        delete from smbms_provider where id=#{id}
+    </delete>
+
 </mapper>

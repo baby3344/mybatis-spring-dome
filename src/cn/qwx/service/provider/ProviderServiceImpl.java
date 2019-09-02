@@ -44,4 +44,10 @@ public class ProviderServiceImpl implements  Providerervice {
     public int updateProvider(Provider provider) {
         return providerMapper.updateProvider(provider);
     }
+
+    @Override
+    @Transactional(propagation = Propagation.SUPPORTS)
+    public int delProviderById(Integer id) {
+        return providerMapper.delProviderById(id);
+    }
 }

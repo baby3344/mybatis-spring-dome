@@ -69,4 +69,13 @@ public class ProviderTest {
         int result=providerService.updateProvider(provider);
         logger.debug("添加之后受影响的行数为:"+result);
     }
+
+    @Test
+    public void testDelById(){
+        ApplicationContext ctx=new ClassPathXmlApplicationContext("applicationContext-mybatis.xml");
+        Providerervice  providerService=(Providerervice)ctx.getBean("providerService");
+        Integer id=17;
+        int num=providerService.delProviderById(id);
+        logger.debug("删除之后受影响的行数为:"+num);
+    }
 }
