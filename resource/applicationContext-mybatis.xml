@@ -67,6 +67,7 @@
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="cn.qwx.dao"/>
     </bean>
+
     <context:component-scan base-package="cn.qwx.service"/>
 
 
@@ -77,6 +78,10 @@
     <bean id="billService" class="cn.qwx.service.Bill.BillServiceImpl">
         <property name="billMapper" ref="billMapper"/>
     </bean>
+
+   <bean id="roleService" class="cn.qwx.service.role.RoleServiceImpl">
+       <property name="roleMapper" ref="roleMapper"/>
+   </bean>
 
 
     <!--示例10配置DAO-->
