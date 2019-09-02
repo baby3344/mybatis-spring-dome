@@ -9,4 +9,6 @@ public interface Providerervice {
    public List<Provider> providerList();
 
    public List<Provider> providerListByName(@Param("proName")String proName);
+
+   public int addProvider(Provider provider);
 }

@@ -30,4 +30,9 @@ public class ProviderServiceImpl implements  Providerervice {
     public List<Provider> providerListByName(String proName) {
         return providerMapper.ProviderListByName(proName);
     }
+
+    @Override
+    public int addProvider(Provider provider) {
+        return providerMapper.addProvider(provider);
+    }
 }

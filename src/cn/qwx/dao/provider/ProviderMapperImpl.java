@@ -17,4 +17,8 @@ public class ProviderMapperImpl extends SqlSessionDaoSupport implements Provider
     public List<Provider> ProviderListByName(String proName) {
         return super.getSqlSession().selectList("cn.qwx.dao.provider.ProviderMapper.ProviderListByName",proName);
     }
+
+    public int addProvider(Provider provider){
+        return super.getSqlSession().insert("cn.qwx.dao.provider.ProviderMapper.addProvider",provider);
+    }
 }

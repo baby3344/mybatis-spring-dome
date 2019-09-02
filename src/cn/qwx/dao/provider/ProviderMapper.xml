@@ -12,4 +12,10 @@
         select * from smbms_provider where proName like CONCAT('%',#{proName},'%')
     </select>
 
+    <!--添加供应商-->
+    <insert id="addProvider" parameterType="Provider">
+        INSERT INTO `smbms`.`smbms_provider` (`proCode`,`proName`,`proDesc`,`proContact`,`proPhone`,`proAddress`,`proFax`,`createdBy`,`creationDate`)
+        VALUES(#{proCode},#{proName},#{proDesc},#{proContact},#{proPhone},#{proAddress},#{proFax},#{createdBy},#{creationDate})
+    </insert>
+
 </mapper>

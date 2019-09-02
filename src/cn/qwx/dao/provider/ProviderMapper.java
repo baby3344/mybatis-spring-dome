@@ -19,4 +19,11 @@ public interface ProviderMapper {
      * @return
      */
     public List<Provider> ProviderListByName(@Param("proName")String proName);
+
+    /**
+     * 添加供应商
+     * @param provider
+     * @return
+     */
+    public int addProvider(Provider provider);
 }
