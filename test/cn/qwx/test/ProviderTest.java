@@ -38,7 +38,7 @@ public class ProviderTest {
         ApplicationContext ctx=new ClassPathXmlApplicationContext("applicationContext-mybatis.xml");
         Providerervice  providerService=(Providerervice)ctx.getBean("providerService");
         Provider provider=new Provider();
-        provider.setProCode("CZ_GYS002");
+        provider.setProCode("CZ_GYS001");
         provider.setProName("郴州玩具厂");
         provider.setProDesc("长期合作伙伴，主营产品：小孩玩具");
         provider.setProContact("谭凝");
@@ -48,6 +48,25 @@ public class ProviderTest {
         provider.setCreatedBy(1);
         provider.setCreationDate(new Date());
         int result=providerService.addProvider(provider);
+        logger.debug("添加之后受影响的行数为:"+result);
+    }
+
+    @Test
+    public void testUpdateProvider(){
+        ApplicationContext ctx=new ClassPathXmlApplicationContext("applicationContext-mybatis.xml");
+        Providerervice  providerService=(Providerervice)ctx.getBean("providerService");
+        Provider provider=new Provider();
+        provider.setId(17);
+        provider.setProCode("CZ_GYS001");
+        provider.setProName("永州玩具厂");
+        provider.setProDesc("长期合作伙伴，主营产品：小孩玩具,杜蕾斯");
+        provider.setProContact("谭凝");
+        provider.setProPhone("4867110");
+        provider.setProAddress("永州市火车站");
+        provider.setProFax("0735-555566");
+        provider.setModifyBy(1);
+        provider.setModifyDate(new Date());
+        int result=providerService.updateProvider(provider);
         logger.debug("添加之后受影响的行数为:"+result);
     }
 }

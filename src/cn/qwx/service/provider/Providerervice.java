@@ -11,4 +11,6 @@ public interface Providerervice {
    public List<Provider> providerListByName(@Param("proName")String proName);
 
    public int addProvider(Provider provider);
+
+   public int updateProvider(Provider provider);
 }

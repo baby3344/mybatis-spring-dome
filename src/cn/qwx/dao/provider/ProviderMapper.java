@@ -26,4 +26,11 @@ public interface ProviderMapper {
      * @return
      */
     public int addProvider(Provider provider);
+
+    /**
+     * 修改供应商
+     * @param provider
+     * @return
+     */
+    public int updateProvider(Provider provider);
 }

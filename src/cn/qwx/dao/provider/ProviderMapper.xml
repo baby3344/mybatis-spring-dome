@@ -18,4 +18,37 @@
         VALUES(#{proCode},#{proName},#{proDesc},#{proContact},#{proPhone},#{proAddress},#{proFax},#{createdBy},#{creationDate})
     </insert>
 
+    <update id="updateProvider" parameterType="Provider">
+        UPDATE `smbms`.`smbms_provider`
+        <trim suffix="where `id`=#{id}" suffixOverrides="," prefix="set">
+            <if test="proCode!=null and proCode!=''">
+                `proCode` = #{proCode},
+            </if>
+            <if test="proName!=null and proName!=''">
+                `proName` = #{proName},
+            </if>
+            <if test="proDesc!=null and proDesc!=''">
+                `proDesc` = #{proDesc},
+            </if>
+            <if test="proContact!=null and proContact!=''">
+                `proContact` = #{proContact},
+            </if>
+            <if test="proPhone!=null and proPhone!=''">
+                `proPhone` = #{proPhone},
+            </if>
+            <if test="proAddress!=null and proAddress!=''">
+                `proAddress` = #{proAddress},
+            </if>
+            <if test="proFax!=null and proFax!=''">
+                `proFax` = #{proFax},
+            </if>
+            <if test="modifyDate!=null and modifyDate!=''">
+                `modifyDate` = #{modifyDate},
+            </if>
+            <if test="modifyBy!=null and modifyBy!=''">
+                `modifyBy` = #{modifyBy}
+            </if>
+        </trim>
+    </update>
+
 </mapper>

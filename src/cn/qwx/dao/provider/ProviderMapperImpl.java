@@ -7,9 +7,9 @@ import org.mybatis.spring.support.SqlSessionDaoSupport;
 import java.util.List;
 
 
-public class ProviderMapperImpl extends SqlSessionDaoSupport implements ProviderMapper {
+public class ProviderMapperImpl /*extends SqlSessionDaoSupport implements ProviderMapper*/ {
 
-    public List<Provider> ProviderList() {
+    /*public List<Provider> ProviderList() {
         return super.getSqlSession().selectList("cn.qwx.dao.provider.ProviderMapper.ProviderList");
     }
 
@@ -20,5 +20,5 @@ public class ProviderMapperImpl extends SqlSessionDaoSupport implements Provider
 
     public int addProvider(Provider provider){
         return super.getSqlSession().insert("cn.qwx.dao.provider.ProviderMapper.addProvider",provider);
-    }
+    }*/
 }
