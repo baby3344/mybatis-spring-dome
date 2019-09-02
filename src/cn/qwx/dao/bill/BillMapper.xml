@@ -11,4 +11,11 @@
         and providerId=#{providerId}
         and isPayment=#{isPayment}
     </select>
+
+    <insert id="addBill" parameterType="Bill">
+        INSERT INTO `smbms`.`smbms_bill` ( `billCode`, `productName`, `productDesc`,
+        `productUnit`, `productCount`, `totalPrice`, `isPayment`, `createdBy`, `creationDate`, `providerId` )
+        VALUES ( #{billCode}, #{productName}, #{productDesc}, #{productUnit}, #{productCount}, #{totalPrice}, #{isPayment}, #{createdBy},
+        #{creationDate}, #{providerId} ) ;
+    </insert>
 </mapper>

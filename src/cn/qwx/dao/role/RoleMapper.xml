@@ -10,4 +10,6 @@
         INSERT INTO `smbms`.`smbms_role` ( `roleCode`, `roleName`, `createdBy`, `creationDate`)
         VALUES ( #{roleCode},#{roleName}, #{createdBy}, #{creationDate})
     </insert>
+
+
 </mapper>

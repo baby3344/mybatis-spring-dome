@@ -7,6 +7,8 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 
 public class BillTest {
@@ -21,5 +23,32 @@ public class BillTest {
             logger.debug("订单编码："+bill.getBillCode()+",商品名称："+bill.getProductName()+",供应商名称："+bill.getProviderName()
             +"，账单金额："+bill.getTotalPrice()+"，是否付款："+bill.getIsPayment()+",创建时间："+bill.getCreationDate());
         }
+    }
+
+    @Test
+    public void testAddBill(){
+        ApplicationContext ctx=new ClassPathXmlApplicationContext("applicationContext-mybatis.xml");
+        BillService billService=(BillService)ctx.getBean("billService");
+        Bill bill=new Bill();
+        bill.setBillCode("BILL2016_019");
+        bill.setProductName("香槟");
+        bill.setProductDesc("酒水");
+        bill.setProductUnit("瓶");
+        bill.setProductCount(new BigDecimal(3000.00));
+        bill.setTotalPrice(new BigDecimal(6000.00));
+        bill.setIsPayment(2);
+        bill.setCreatedBy(1);
+        bill.setCreationDate(new Date());
+        bill.setProviderId(1);
+        int result=billService.addBill(bill);
+        logger.info("受影响的行数为："+result);
+    }
+
+    @Test
+    public void  testdelById(){
+        ApplicationContext ctx=new ClassPathXmlApplicationContext("applicationContext-mybatis.xml");
+        BillService billService=(BillService)ctx.getBean("billService");
+        int result=billService.delById(19);
+        logger.info("受影响的行数为："+result);
     }
 }
